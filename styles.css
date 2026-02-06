@@ -1,0 +1,58 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+#container {
+    display: flex;
+    height: 100vh;
+}
+
+#sidebar {
+    width: 300px;
+    background: #1e1e2f;
+    color: white;
+    padding: 20px;
+}
+
+#sidebar h2 {
+    margin-bottom: 15px;
+}
+
+#sidebar label {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+#sidebar select,
+#sidebar textarea,
+#sidebar button {
+    width: 100%;
+    margin-top: 5px;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+}
+
+#sidebar textarea {
+    resize: none;
+    height: 70px;
+}
+
+#sidebar button {
+    margin-top: 15px;
+    background: #4caf50;
+    color: white;
+    cursor: pointer;
+}
+
+#sidebar button:hover {
+    background: #45a049;
+}
+
+#map {
+    flex: 1;
+}

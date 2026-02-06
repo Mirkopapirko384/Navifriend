@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <title>Безопасни пътища</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="container">
+
+    <div id="sidebar">
+        <h2>🚦 Безопасни пътища</h2>
+
+        <form id="reportForm">
+            <label>Тип проблем</label>
+            <select id="type">
+                <option value="дупка">🕳️ Дупка</option>
+                <option value="светофар">🚦 Светофар</option>
+                <option value="маркировка">🚧 Маркировка</option>
+                <option value="кръстовище">⚠️ Кръстовище</option>
+            </select>
+
+            <label>Опасност</label>
+            <select id="danger">
+                <option value="ниска">Ниска</option>
+                <option value="средна">Средна</option>
+                <option value="висока">Висока</option>
+            </select>
+
+            <label>Описание</label>
+            <textarea id="description" placeholder="Опиши проблема..."></textarea>
+
+            <button type="submit">Добави сигнал</button>
+        </form>
+
+        <h3>Филтър</h3>
+        <select id="filter">
+            <option value="all">Всички</option>
+            <option value="дупка">Дупки</option>
+            <option value="светофар">Светофари</option>
+            <option value="маркировка">Маркировка</option>
+            <option value="кръстовище">Кръстовища</option>
+        </select>
+    </div>
+
+    <div id="map"></div>
+</div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
