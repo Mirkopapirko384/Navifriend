@@ -2,59 +2,68 @@
 <html lang="bg">
 <head>
     <meta charset="UTF-8">
-    <title>Безопасни пътища</title>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    />
-
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Гражданска Наука - Проект НОИТ</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="AppStyle.css">
 </head>
 <body>
 
-<div id="container">
+<div id="login-overlay">
+    <div id="login-box">
+        <h2>🔐 Регистрация / Вход</h2>
+        <p>Въведете вашите данни</p>
 
-    <div id="sidebar">
-        <h2>🚦 Безопасни пътища</h2>
+        <div class="input-group">
+            <input type="text" id="reg-name" placeholder="Име">
+            <input type="email" id="reg-email" placeholder="Имейл (напр. user@gmail.com)">
+            <input type="password" id="reg-pass" placeholder="Парола">
+        </div>
+        
+        <button class="register-btn" onclick="manualRegister()">Влез в системата</button>
 
-        <form id="reportForm">
-            <label>Тип проблем</label>
-            <select id="type">
-                <option value="дупка">🕳️ Дупка</option>
-                <option value="светофар">🚦 Светофар</option>
-                <option value="маркировка">🚧 Маркировка</option>
-                <option value="кръстовище">⚠️ Кръстовище</option>
-            </select>
+        <div class="divider"><span>или</span></div>
 
-            <label>Опасност</label>
-            <select id="danger">
-                <option value="ниска">Ниска</option>
-                <option value="средна">Средна</option>
-                <option value="висока">Висока</option>
-            </select>
+        <div id="google-signin-btn" onclick="googleSignInFake()">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" width="20">
+            <span>Влез с Google</span>
+        </div>
+    </div>
+</div>
 
-            <label>Описание</label>
-            <textarea id="description" placeholder="Опиши проблема..."></textarea>
+    <div class="search-container">
+      <input type="text"  id="address-input" placeholder="Потърси адрес в София...">
+      <button onclick="searchAdress()">🔍</button>
+    </div>
 
-            <button type="submit">Добави сигнал</button>
-        </form>
+    <div id="header">
+    <span onclick="this.parentElement.classList.add('header-hidden')" 
+          style="position:absolute; right:15px; top:10px; cursor:pointer;">✖</span>
+          <button onclick="logout()" id="logout-btn">Изход 🚪</button>
+    <h1>🌍 Гражданска Наука: Сигнали за София</h1>
+    <p id="user-rank">Кликни върху картата, за да подадеш сигнал</p>
+    </div>
 
-        <h3>Филтър</h3>
-        <select id="filter">
-            <option value="all">Всички</option>
-            <option value="дупка">Дупки</option>
-            <option value="светофар">Светофари</option>
-            <option value="маркировка">Маркировка</option>
-            <option value="кръстовище">Кръстовища</option>
-        </select>
+    <div id ="signal-form" style="display: none;">
+     <h3>Добави сигнал</h3>
+     <label>Тип на проблема:</label>
+     <select id="type">
+        <option value="pollution">🍃 Замърсяване</option>
+        <option value="road">🛣️ Пътна инфраструктура</option>
+        <option value="nature">🐾 Биоразнообразие</option>
+     </select>
+     <br><br>
+     <label>Описание:</label>
+     <textarea  id="desc" rows="3" placeholder="Опишете проблема..."></textarea>
+    <br><br>
+    <button onclick="saveSignal()">Запази</button>
+    <button onclick="closeForm()">Отказ</button>
     </div>
 
     <div id="map"></div>
-</div>
 
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="script.js"></script>
-
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="AppJS.js"></script>
 </body>
 </html>
