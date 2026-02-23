@@ -4,65 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Гражданска Наука - Проект НОИТ</title>
-    
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="AppStyle.css">
 </head>
 <body>
-
-<div id="login-overlay">
-    <div id="login-box">
-        <h2>🔐 Регистрация / Вход</h2>
-        <p>Въведете вашите данни</p>
-
-        <div class="input-group">
-            <input type="text" id="reg-name" placeholder="Име">
-            <input type="email" id="reg-email" placeholder="Имейл (напр. user@gmail.com)">
-            <input type="password" id="reg-pass" placeholder="Парола">
-        </div>
-        
-        <button class="register-btn" onclick="manualRegister()">Влез в системата</button>
-
-        <div class="divider"><span>или</span></div>
-
-        <div id="google-signin-btn" onclick="googleSignInFake()">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" width="20">
-            <span>Влез с Google</span>
+    
+    <div id="login-overlay">
+        <div id="login-box">
+            <h2>🔐 Регистрация / Вход</h2>
+            <p>Въведете вашите данни</p>
+            <div class="input-group">
+                <input type="text" id="reg-name" placeholder="Име">
+                <input type="email" id="reg-email" placeholder="Имейл">
+                <input type="password" id="reg-pass" placeholder="Парола">
+            </div>
+            <button class="register-btn" onclick="manualRegister()">Влез в системата</button>
+            <div class="divider"><span>или</span></div>
+            <div id="google-signin-btn" onclick="googleSignInReal()">
+    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="20">
+    <span>Влез с Google</span>
+</div>
         </div>
     </div>
-</div>
 
-    <div class="search-container">
-      <input type="text"  id="address-input" placeholder="Потърси адрес в София...">
-      <button onclick="searchAdress()">🔍</button>
+    <div class="search-bar-container">
+        <input type="text" id="address-input" placeholder="Потърси адрес в София...">
+        <button class="search-btn" onclick="searchAdress()">🔍</button>
     </div>
 
     <div id="header">
-    <span onclick="this.parentElement.classList.add('header-hidden')" 
-          style="position:absolute; right:15px; top:10px; cursor:pointer;">✖</span>
-          <button onclick="logout()" id="logout-btn">Изход 🚪</button>
-    <h1>🌍 Гражданска Наука: Сигнали за София</h1>
-    <p id="user-rank">Кликни върху картата, за да подадеш сигнал</p>
+        <span onclick="this.parentElement.classList.add('header-hidden')" style="position:absolute; right:15px; top:10px; cursor:pointer;">✖</span>
+        <button onclick="logout()" id="logout-btn">Изход 🚪</button>
+        <h1>🌍 Гражданска Наука: Сигнали за София</h1>
+        <p id="user-rank">Кликни върху картата, за да подадеш сигнал</p>
     </div>
 
-    <div id ="signal-form" style="display: none;">
-     <h3>Добави сигнал</h3>
-     <label>Тип на проблема:</label>
-     <select id="type">
-        <option value="pollution">🍃 Замърсяване</option>
-        <option value="road">🛣️ Пътна инфраструктура</option>
-        <option value="nature">🐾 Биоразнообразие</option>
-     </select>
-     <br><br>
-     <label>Описание:</label>
-     <textarea  id="desc" rows="3" placeholder="Опишете проблема..."></textarea>
-    <br><br>
-    <button onclick="saveSignal()">Запази</button>
-    <button onclick="closeForm()">Отказ</button>
+    <div id="signal-form">
+        <h3>Добави сигнал</h3>
+        <label>Тип на проблема:</label>
+        <select id="type">
+            <option value="pollution">🍃 Замърсяване</option>
+            <option value="road">🛣️ Пътна инфраструктура</option>
+            <option value="nature">🐾 Биоразнообразие</option>
+        </select>
+        <br><br>
+        <label>Описание:</label>
+        <textarea id="desc" rows="3" placeholder="Опишете проблема..."></textarea>
+        <br><br>
+        <button onclick="saveSignal()">Запази</button>
+        <button onclick="closeForm()">Отказ</button>
     </div>
 
     <div id="map"></div>
 
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="AppJS.js"></script>
 </body>
