@@ -108,7 +108,7 @@ body {
 .search-bar-container {
     position: absolute; 
     top: 20px; 
-    left: 20px; 
+    left: 100px; 
     z-index: 1100;
     background: white;
      padding: 5px 15px;
