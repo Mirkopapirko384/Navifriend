@@ -74,6 +74,18 @@ function updateGreeting(name) {
     }
 }
 
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+       
+        const name = user.displayName || user.email.split('@')[0];
+        enterApp(name); 
+        console.log("Автоматичен вход за:", user.email);
+    } else {
+        
+        document.getElementById('login-overlay').style.display = 'flex';
+    }
+});
+
 function logout() {
     auth.signOut().then(() => {
         localStorage.removeItem('currentUser');
@@ -132,3 +144,22 @@ window.onload = () => {
     } 
     
 };
+
+function closeSignalMenu() {
+    document.getElementById('add-signal-menu').style.display = 'none';
+}
+
+function saveSignal() {
+let type = document.getElementById('problem-type').value;
+let desc = document.getElementById('textarea').value;
+
+if (desc.trim() === '') {
+alert('Моля, опишете проблема!');
+return;
+}
+
+console.log("Запазване на сигнал:", type, desc);
+
+alert('Сигналът е запазен! Благодарим за вашето участие.');
+closeSignalMenu();
+}
