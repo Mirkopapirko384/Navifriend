@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Гражданска Наука - Проект НОИТ</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="AppStyle.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     
@@ -39,7 +39,7 @@
         <p id="user-rank">Кликни върху картата, за да подадеш сигнал</p>
     </div>
 
-    <div id="signal-form">
+   <div id="signal-form">
         <h3>Добави сигнал</h3>
         <label>Тип на проблема:</label>
         <select id="type">
@@ -51,8 +51,8 @@
         <label>Описание:</label>
         <textarea id="desc" rows="3" placeholder="Опишете проблема..."></textarea>
         <br><br>
-        <button onclick="saveSignal()">Запази</button>
-        <button onclick="closeForm()">Отказ</button>
+        <button type="button" onclick="saveSignal()">Запази</button>
+        <button type="button" onclick="closeForm()">Отказ</button>
     </div>
 
     <div id="map"></div>
@@ -61,10 +61,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="AppJS.js"></script>
+    <script src="app.js"></script>
 
-    <button type="button" onclick="saveSignal()">Запази</button>
-
-<button type="button" onclick="closeSignalMenu()">Отказ</button>
 </body>
 </html>
